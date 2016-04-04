@@ -1,7 +1,6 @@
 odoo:
   tty: true
-  command:
-  - /sbin/my_init
+  command: openerp-server --noaccent --addons-path=/mnt/extra-addons
   image: jmcarbo/odoo70
   stdin_open: true
   ports:

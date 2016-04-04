@@ -50,5 +50,5 @@ ENV OPENERP_SERVER /etc/odoo/openerp-server.conf
 # Set default user when running the container
 USER odoo
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 CMD ["openerp-server"]

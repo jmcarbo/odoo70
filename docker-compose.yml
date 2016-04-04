@@ -1,0 +1,10 @@
+odoo:
+  tty: true
+  command:
+  - /sbin/my_init
+  image: jmcarbo/odoo70
+  stdin_open: true
+  ports:
+  - 8069:8069
+  links:
+    - db:db

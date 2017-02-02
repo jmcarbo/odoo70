@@ -1,9 +1,21 @@
-odoo:
-  tty: true
-  command: openerp-server --noaccent --addons-path=/mnt/extra-addons
-  image: jmcarbo/odoo70
-  stdin_open: true
-  ports:
-  - 8069:8069
-  links:
-    - db:db
+version: '3'
+services:
+  odoo:
+    tty: true
+    command: /bin/bash -l -c '/entrypoint.sh openerp-server --db_password=odoo --db_host=db --unaccent --addons-path=/mnt/extra-addons'
+    build: .
+    #image: jmcarbo/odoo70
+    stdin_open: true
+    ports:
+    - 8069:8069
+    volumes:
+      - $PWD/extra-addons:/mnt/extra-addons
+  db:
+    image: postgres
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=odoo 
+      - POSTGRES_USER=odoo 
+volumes:
+  postgresdata:

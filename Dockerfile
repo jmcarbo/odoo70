@@ -67,10 +67,11 @@ RUN set -x; \
 
 # Install Odoo
 ENV ODOO_VERSION 7.0
-ENV ODOO_RELEASE 20140804-231303-1
+#ENV ODOO_RELEASE 20140804-231303-1
+ENV ODOO_RELEASE 20170202
+#        curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/openerp_${ODOO_VERSION}-${ODOO_RELEASE}_all.deb \
 RUN set -x; \
-        curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/openerp_${ODOO_VERSION}-${ODOO_RELEASE}_all.deb \
-	&& curl -o openerp.tar.gz http://nightly.odoo.com/7.0/nightly/deb/openerp_7.0.latest.tar.gz \
+        curl -o odoo.deb -SL http://nightly.odoo.com/7.0/nightly/deb/openerp_7.0.20170202_all.deb \
         && dpkg --force-depends -i odoo.deb \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
